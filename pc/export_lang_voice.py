@@ -11,12 +11,16 @@ The conditionals (Chatterbox's prepare_conditionals, exaggeration 0.5) are saved
 console holds the prompt and the sentence together.
 
 The voices of the app (Mozilla Common Voice 17, CC0; each recording is a few clips of one speaker of the train set,
-trimmed at both ends, levelled to -21 dBFS of speech and joined with 0.08 s of silence, 24 kHz):
-  ar   8.7 s: common_voice_ar_24161342, _24162090, _24166017, _24157386     --rows speaker --gain-db 5.5
+trimmed at both ends, levelled to -21 dBFS of speech and joined with 0.08 s of silence, 24 kHz). Each clip is cleaned
+with Resemble Enhance (MIT; nfe 128, midpoint solver, lambd 0.9, tau 0.5, as the Russian voice) and then cut at the
+same samples, so the recording keeps its length:
+  ar   8.7 s: common_voice_ar_24161342, _24162090, _24166017, _24157386     --rows speaker --gain-db 3.8
   ja   7.1 s: common_voice_ja_19682143, _19682147, _19682962                --rows speaker --gain-db 2.2
 Both keep Garlic's speaker row: with Whisper large-v3 as the judge (25 sentences per language, 2 seeds), it gave the
-fewest misheard characters, and Whisper hears the language more surely than with Garlic's own voice. The gains bring
-them to Garlic's loudness (Arabic about 1 dB under it, to keep the limiter from working all the time).
+fewest misheard characters, and Whisper hears the language more surely than with Garlic's own voice. The cleaned
+recordings are understood as well as the raw ones (120 sentence pairs per language) and give quieter backgrounds
+(Arabic +6 dB, Japanese +12 dB). The gains bring them to Garlic's loudness (Arabic about 1 dB under it, to keep the
+limiter from working all the time; its cleaned recording comes out 1.7 dB louder than the raw one, hence 3.8).
 
 Run: python pc/export_lang_voice.py <lang> <recording.wav> [--rows all|speaker] [--gain-db G]
      (needs torch and the chatterbox package, and models/chatterbox/hf: ve, t3_mtl23ls_v3 and s3gen safetensors)

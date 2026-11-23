@@ -16,7 +16,7 @@ Garlic LLM's own code is licensed under the GNU General Public License v3.0 (see
 
 - The default voice is Chatterbox's built-in voice. Its pronunciation in Spanish, Portuguese, Italian, French and German is conditioned on reference clips from Chatterbox's official demo (Resemble AI).
 - The Russian voice is cloned from a recording of [Mozilla Common Voice 17](https://commonvoice.mozilla.org) (CC0), cleaned with [Resemble Enhance](https://github.com/resemble-ai/resemble-enhance) (MIT).
-- The Arabic and Japanese voices are cloned from recordings of [Mozilla Common Voice 17](https://commonvoice.mozilla.org) (CC0): a few clips of one speaker each, trimmed and levelled (`pc/export_lang_voice.py`).
+- The Arabic and Japanese voices are cloned from recordings of [Mozilla Common Voice 17](https://commonvoice.mozilla.org) (CC0): a few clips of one speaker each, trimmed, levelled and cleaned with [Resemble Enhance](https://github.com/resemble-ai/resemble-enhance) (MIT) (`pc/export_lang_voice.py`).
 
 ## Code inside the app
 
